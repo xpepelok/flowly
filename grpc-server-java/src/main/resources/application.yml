@@ -1,0 +1,24 @@
+service:
+  database:
+    auth:
+      host: "${DATABASE_HOST:localhost}"
+      port: ${DATABASE_PORT:3306}
+      name: "${DATABASE_NAME:bank}"
+      username: "${DATABASE_USERNAME:root}"
+      password: "${DATABASE_PASSWORD:}"
+    tables:
+      transaction-table-name: "${DATABASE_TRANSACTION_TABLE:transactions}"
+      user-data-table-name: "${DATABASE_USER_DATA_TABLE:userdata}"
+      legal-user-data-table-name: "${DATABASE_LEGAL_USER_DATA_TABLE:legal_userdata}"
+  port: ${GRPC_SERVER_PORT:6979}
+
+management:
+  server:
+    port: ${SERVICE_MANAGEMENT_PORT:9091}
+  endpoints:
+    web:
+      exposure:
+        include: "health"
+  endpoint:
+    health:
+      show-details: "always"

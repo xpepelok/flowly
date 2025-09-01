@@ -1,0 +1,72 @@
+syntax = "proto3";
+
+package flowly.transaction;
+
+option java_package = "dev.xpepelok.flowly.transaction.grpc";
+option java_multiple_files = true;
+
+import "transaction/models.proto";
+
+service BankTransactionService {
+  rpc CreateTransaction(CreateTransactionRequest) returns (CreateTransactionResponse);
+  rpc GetTransactionsBySender(GetTransactionBySenderRequest) returns (GetTransactionBySenderResponse);
+  rpc GetTransactionsByRecipient(GetTransactionByRecipientRequest) returns (GetTransactionByRecipientResponse);
+  rpc GetTransactionsByIban(GetTransactionsByIbanRequest) returns (GetTransactionsByIbanResponse);
+  rpc GetTransactionsAmount(GetTransactionsAmountRequest) returns (GetTransactionsAmountResponse);
+  rpc GetTransactions(GetTransactionsRequest) returns (GetTransactionsResponse);
+}
+
+message CreateTransactionRequest {
+  Transaction transaction = 2;
+}
+
+message CreateTransactionResponse {
+  bool result = 1;
+}
+
+message GetTransactionBySenderRequest {
+  string iban = 1;
+  int32 offset = 2;
+  int32 limit = 3;
+}
+
+message GetTransactionBySenderResponse {
+  repeated Transaction transactions = 1;
+}
+
+message GetTransactionByRecipientRequest {
+  string iban = 1;
+  int32 offset = 2;
+  int32 limit = 3;
+}
+
+message GetTransactionByRecipientResponse {
+  repeated Transaction transactions = 1;
+}
+
+message GetTransactionsRequest {
+  int32 offset = 1;
+  int32 limit = 2;
+}
+
+message GetTransactionsResponse {
+  repeated Transaction transactions = 1;
+}
+
+message GetTransactionsByIbanRequest {
+  int32 offset = 1;
+  int32 limit = 2;
+  string iban = 3;
+}
+
+message GetTransactionsByIbanResponse {
+  repeated Transaction transactions = 1;
+}
+
+message GetTransactionsAmountRequest {
+
+}
+
+message GetTransactionsAmountResponse {
+  int32 amount = 1;
+}

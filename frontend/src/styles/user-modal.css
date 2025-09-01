@@ -1,0 +1,43 @@
+.user-modal-content {
+    @apply max-w-3xl;
+}
+
+.user-modal-info {
+    @apply grid grid-cols-1 md:grid-cols-2 gap-4;
+}
+
+.user-modal-section {
+    @apply space-y-2;
+}
+
+.user-modal-label {
+    @apply text-sm text-muted-foreground;
+}
+
+.user-modal-value {
+    @apply font-medium;
+}
+
+.user-modal-mono {
+    @apply font-mono text-sm break-all;
+}
+
+.user-modal-transactions {
+    @apply h-72 border rounded-md;
+}
+
+.user-modal-table {
+    @apply w-full text-sm;
+}
+
+.user-modal-th {
+    @apply text-left p-2 text-muted-foreground;
+}
+
+.user-modal-td {
+    @apply p-2;
+}
+
+.user-modal-row {
+    @apply border-t;
+}

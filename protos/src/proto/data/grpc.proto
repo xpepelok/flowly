@@ -1,0 +1,101 @@
+syntax = "proto3";
+
+package flowly.data;
+
+option java_package = "dev.xpepelok.flowly.data.grpc";
+option java_multiple_files = true;
+
+import "data/models.proto";
+
+service BankDataService {
+  rpc CreateBankUser(CreateBankUserRequest) returns (CreateBankUserResponse);
+  rpc CreateBankLegalUser(CreateBankLegalUserRequest) returns (CreateBankLegalUserResponse);
+  rpc GetBankUser(GetBankUserRequest) returns (GetBankUserResponse);
+  rpc GetBankLegalUser(GetBankLegalUserRequest) returns (GetBankLegalUserResponse);
+  rpc SaveBankUser(SaveBankUserRequest) returns (SaveBankUserResponse);
+  rpc SaveBankLegalUser(SaveBankLegalUserRequest) returns (SaveBankLegalUserResponse);
+  rpc GetBankUsersByIban(GetBankUsersByIbanRequest) returns (GetBankUsersByIbanResponse);
+  rpc GetBankUsersByLastName(GetBankUsersByLastNameRequest) returns (GetBankUsersByLastNameResponse);
+  rpc GetUsersAmount(GetUsersAmountRequest) returns (GetUsersAmountResponse);
+}
+
+message CreateBankUserRequest {
+  bytes userID = 1;
+  PersonalOwnerData ownerData = 2;
+}
+
+message CreateBankUserResponse {
+  BankUser user = 1;
+}
+
+message CreateBankLegalUserRequest {
+  bytes userID = 1;
+  PersonalOwnerData ownerData = 2;
+  int32 companyID = 3;
+  string companyName = 4;
+}
+
+message CreateBankLegalUserResponse {
+  BankLegalUser user = 1;
+}
+
+message GetBankUserRequest {
+  bytes userID = 1;
+}
+
+message GetBankUserResponse {
+  optional BankUser user = 1;
+}
+
+message GetBankLegalUserRequest {
+  bytes userID = 1;
+}
+
+message GetBankLegalUserResponse {
+  optional BankLegalUser user = 1;
+}
+
+message SaveBankUserRequest {
+  BankUser user = 1;
+}
+
+message SaveBankUserResponse {
+  bool result = 1;
+}
+
+message SaveBankLegalUserRequest {
+  BankLegalUser user = 1;
+}
+
+message SaveBankLegalUserResponse {
+  bool result = 1;
+}
+
+message GetBankUsersByLastNameRequest {
+  int32 offset = 1;
+  int32 limit = 2;
+  string query = 3;
+}
+
+message GetBankUsersByLastNameResponse {
+  repeated BankUser users = 1;
+}
+
+message GetBankUsersByIbanRequest {
+  int32 offset = 1;
+  int32 limit = 2;
+  string query = 3;
+}
+
+message GetBankUsersByIbanResponse {
+  repeated BankUser users = 1;
+}
+
+message GetUsersAmountRequest {
+
+}
+
+message GetUsersAmountResponse {
+  int32 amount = 1;
+}
+

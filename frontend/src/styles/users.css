@@ -1,0 +1,39 @@
+.users-grid {
+    @apply grid grid-cols-1 lg:grid-cols-3 gap-6;
+}
+
+.users-card {
+    @apply lg:col-span-2;
+}
+
+.users-content {
+    @apply relative flex flex-col;
+    min-height: 400px;
+    padding-bottom: 64px;
+}
+
+.users-search-row {
+    @apply flex flex-col md:flex-row gap-2 items-stretch md:items-end mb-4;
+}
+
+.users-table {
+    @apply border rounded-md overflow-hidden flex-1 overflow-auto;
+}
+
+.users-table-head {
+    @apply bg-muted/30;
+}
+
+.users-table-row {
+    @apply border-t hover:bg-muted/20 cursor-pointer;
+}
+
+.users-pagination-fixed {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -20px;
+    display: flex;
+    justify-content: center;
+    width: max-content;
+}

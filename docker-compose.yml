@@ -1,0 +1,54 @@
+services:
+  grpc-server:
+    env_file:
+      - .env
+    build:
+      context: .
+      dockerfile: grpc-server-java/Dockerfile
+    image: bankapp/grpc-server:local
+    ports:
+      - "9090:9090"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    healthcheck:
+      test: ["CMD", "curl", "-fsS", "http://localhost:9091/actuator/health"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+      start_period: 15s
+
+  app:
+    env_file:
+      - .env
+    build:
+      context: .
+      dockerfile: app/Dockerfile
+    image: bankapp/app:local
+    ports:
+      - "8080:8080"
+    depends_on:
+      grpc-server:
+        condition: service_healthy
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    healthcheck:
+      test: ["CMD", "curl", "-fsS", "http://localhost:9092/actuator/health"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+      start_period: 20s
+
+  frontend:
+    env_file:
+      - .env
+    build:
+      context: .
+      dockerfile: frontend/Dockerfile
+    image: bankapp/frontend:local
+    ports:
+      - "5173:5173"
+    depends_on:
+      app:
+        condition: service_healthy
+    environment:
+      VITE_API_URL: "http://localhost:8080"

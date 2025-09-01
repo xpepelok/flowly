@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package flowly.transaction;
+
+option java_package = "dev.xpepelok.flowly.transaction.model";
+option java_multiple_files = true;
+
+message Transaction {
+  string sender = 1;
+  string recipient = 2;
+  int64 sum = 3;
+  int64 transactionDate = 4;
+}

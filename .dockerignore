@@ -1,0 +1,9 @@
+.git
+.idea
+.gradle
+build
+**/build
+node_modules
+**/node_modules
+frontend/.next
+frontend/dist

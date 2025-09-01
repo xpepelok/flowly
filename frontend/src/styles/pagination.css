@@ -1,0 +1,23 @@
+.pagination {
+    @apply flex items-center gap-1 select-none flex-wrap;
+}
+
+.pagination-btn {
+    @apply px-2 py-1 border rounded text-sm disabled:opacity-50;
+}
+
+.pagination-btn-active {
+    @apply px-3 py-1 border rounded text-sm bg-gray-900 text-white;
+}
+
+.pagination-btn-default {
+    @apply px-3 py-1 border rounded text-sm hover:bg-gray-50;
+}
+
+.pagination-dots {
+    @apply px-2 text-sm text-gray-500;
+}
+
+.pagination-info {
+    @apply ml-2 text-xs text-muted-foreground;
+}

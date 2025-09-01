@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+package flowly.data;
+
+option java_package = "dev.xpepelok.flowly.data.model";
+option java_multiple_files = true;
+
+message BankUser {
+  bytes registrationID = 1;
+  PersonalOwnerData ownerData = 2;
+  BalanceData balanceData = 3;
+  string iban = 4;
+}
+
+message BankLegalUser {
+  BankUser mainData = 1;
+  CompanyData companyData = 2;
+}
+
+message CompanyData {
+  bytes registrationID = 1;
+  int32 companyID = 2;
+  string companyName = 3;
+}
+
+message PersonalOwnerData {
+  string firstName = 1;
+  string middleName = 2;
+  string lastName = 3;
+  int64 bornDate = 4;
+  string address = 5;
+}
+
+message BalanceData {
+  int64 balance = 1;
+  int64 holdBalance = 2;
+}

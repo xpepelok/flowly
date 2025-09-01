@@ -1,0 +1,24 @@
+.tx-grid {
+    @apply grid grid-cols-1 lg:grid-cols-3 gap-6;
+}
+
+.tx-card {
+    @apply lg:col-span-2;
+}
+
+.tx-header {
+    @apply pb-5;
+}
+
+.tx-content {
+    @apply relative flex flex-col min-h-[380px];
+}
+
+.tx-search {
+    @apply mb-4;
+}
+
+.tx-pagination {
+    @apply border-t pt-4 flex justify-center;
+    margin-bottom: -10px;
+}
